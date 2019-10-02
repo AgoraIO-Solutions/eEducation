@@ -154,7 +154,7 @@
 - (IBAction)joinRoom:(UIButton *)sender {
     [self.activityIndicator startAnimating];
     if (self.classNameTextFiled.text.length <= 0 || self.userNameTextFiled.text.length <= 0 || ![self judgeClassRoomText:self.classNameTextFiled.text] || ![self judgeClassRoomText:self.userNameTextFiled.text]) {
-        UIAlertController *alterVC = [UIAlertController alertControllerWithTitle:@"请检查房间号和用户名符合规格" message:@"11位及以内的数字或者英文字符" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alterVC = [UIAlertController alertControllerWithTitle:@"Please check the room number and user name to meet the specifications." message:@"11 Bits and numbers or English characters" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction *sure = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
         }];
         [alterVC addAction:sure];
@@ -190,7 +190,7 @@
 - (void)joinClassRoomError {
     [self.activityIndicator stopAnimating];
     UIAlertController *alterVC = [UIAlertController alertControllerWithTitle:@"join classRoom error" message:@"no network" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *sure = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *sure = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
     }];
     [alterVC addAction:sure];
     [self presentViewController:alterVC animated:YES completion:nil];

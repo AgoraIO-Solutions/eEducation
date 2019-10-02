@@ -164,7 +164,7 @@
             if (success) {
                 weakself.title = NSLocalizedString(@"我的白板", nil);
                 weakself.whiteRoom = room;
-                WhiteRectangleConfig *config = [[WhiteRectangleConfig alloc] initWithInitialPosition:kScreenWidth height:kScreenHeight animation:(AnimationModeContinuous)];
+                WhiteRectangleConfig *config = [[WhiteRectangleConfig alloc] initWithInitialPosition:kScreenWidth height:kScreenHeight animation:(WhiteAnimationModeContinuous)];
                 [weakself.whiteRoom moveCameraToContainer:config];
                 if (weakself.role == ClassRoomRoleAudience) {
                     weakself.whiteBoardTool.hidden = YES;
@@ -177,7 +177,7 @@
                 }
                 [weakself.whiteRoom refreshViewSize];
             } else {
-                weakself.title = NSLocalizedString(@"加入失败", nil);
+                weakself.title = NSLocalizedString(@"Join failed", nil);
             }
         }];
     }
@@ -285,12 +285,12 @@
 }
 
 - (IBAction)leaveRoom:(UIButton *)sender {
-    AgoraAlertViewController *alterVC = [AgoraAlertViewController alertControllerWithTitle:@"点击确定后将退出当前课堂，" message:@"是否确定退出？" preferredStyle:UIAlertControllerStyleAlert];
+    AgoraAlertViewController *alterVC = [AgoraAlertViewController alertControllerWithTitle:@"Click OK to exit the current class" message:@"Are you sure you want to quit?" preferredStyle:UIAlertControllerStyleAlert];
     WEAK(self)
-    UIAlertAction *sure = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction *sure = [UIAlertAction actionWithTitle:@"determine" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [weakself leaveClassRoom];
     }];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:nil];
     [alterVC addAction:sure];
     [alterVC addAction:cancel];
     [self presentViewController:alterVC animated:YES completion:nil];
@@ -438,9 +438,9 @@
         || errorCode == AgoraErrorCodeLoadMediaEngine
         || errorCode == AgoraErrorCodeStartCall
         || errorCode == AgoraErrorCodeInvalidToken) {
-        AgoraAlertViewController *alterVC = [AgoraAlertViewController alertControllerWithTitle:@"AgoraEngine ERROR" message:@"请退出" preferredStyle:UIAlertControllerStyleAlert];
+        AgoraAlertViewController *alterVC = [AgoraAlertViewController alertControllerWithTitle:@"AgoraEngine ERROR" message:@"Please quit" preferredStyle:UIAlertControllerStyleAlert];
         WEAK(self)
-        UIAlertAction *sure = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *sure = [UIAlertAction actionWithTitle:@"determine" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [weakself leaveClassRoom];
         }];
         [alterVC addAction:sure];
@@ -527,8 +527,8 @@
     self.teactherDefaultImage.hidden = NO;
     self.teactherNameLabel.text = nil;
     [self.teactherVideoView bringSubviewToFront:self.teactherDefaultImage];
-    AgoraAlertViewController *alterVC = [AgoraAlertViewController alertControllerWithTitle:@"老师退出课堂" message:@"" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    AgoraAlertViewController *alterVC = [AgoraAlertViewController alertControllerWithTitle:@"The teacher left the class" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"cancel" style:UIAlertActionStyleCancel handler:nil];
     [alterVC addAction:cancel];
     [self presentViewController:alterVC animated:YES completion:nil];
 }
@@ -548,7 +548,7 @@
     [self.muteLocalVideoButton setImage:[UIImage imageNamed:imageName] forState:(UIControlStateNormal)];
     [self.agoraEngineKit muteLocalVideoStream:stream];
     [self refreshUserModelVideoMuted:stream];
-    NSString *promptMessage = stream == YES ? @"老师关闭了你的摄像头" : @"老师打开了你的摄像头";
+    NSString *promptMessage = stream == YES ? @"The teacher closed your camera" : @"The teacher opened your camera";
     [self autoPromptViewMessage:promptMessage];
 }
 
@@ -558,7 +558,7 @@
     [self.muteLocalAudioButton setImage:[UIImage imageNamed:imageName] forState:(UIControlStateNormal)];
     [self.agoraEngineKit muteLocalAudioStream:stream];
     [self refreshUserModelAudioMuted:stream];
-    NSString *promptMessage = stream == YES ? @"老师关闭了你的麦克风" : @"老师打开了你的麦克风";
+    NSString *promptMessage = stream == YES ? @"The teacher turned off your microphone" : @"The teacher turned on your microphone";
     [self autoPromptViewMessage:promptMessage];
 }
 

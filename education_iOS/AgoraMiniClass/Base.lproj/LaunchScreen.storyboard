@@ -36,12 +36,12 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kam-LA-oqv">
-                                <rect key="frame" x="139.66666666666666" y="295" width="134.99999999999997" height="36"/>
+                                <rect key="frame" x="121" y="295" width="172" height="36"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="36" id="Rik-D2-oto"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="小班课" image="logoAgora">
+                                <state key="normal" title="Small Class" image="logoAgora">
                                     <color key="titleColor" red="0.59999999999999998" green="0.80784313725490198" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
